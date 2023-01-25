@@ -22,5 +22,7 @@ jobs:
           # 👇 Adds Chromatic as a step in the workflow
         - name: Branch
           run: echo The PR was merged to ${GITHUB_REF#refs/heads/}
+        - name: Directory
+          run: echo Run on directory ${GITHUB_WORKSPACE}
         - name: Publish to Chromatic
           run: npm run chromatic --project-token=CHROMATIC_PROJECT_TOKEN
