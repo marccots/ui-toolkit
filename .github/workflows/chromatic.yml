@@ -21,9 +21,17 @@ jobs:
     runs-on: ubuntu-latest
     # Job steps
     steps:
+      - uses: actions/checkout@v1
+      - name: Install dependencies
+        run: yarn
       - name: Review in Chromatic
         if: github.ref != 'refs/heads/master' && github.ref != 'refs/heads/dev'
-        run: echo Review on Chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
       - name: Publish to Master
         if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/dev'
-        run: echo Publish to master
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          autoAcceptChanges: true
