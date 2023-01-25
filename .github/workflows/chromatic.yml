@@ -22,7 +22,7 @@ jobs:
     # Job steps
     steps:
       - name: Review in Chromatic
-        if: github.ref != 'refs/heads/master' || github.ref != 'refs/heads/dev'
+        if: github.ref != 'refs/heads/master' && github.ref != 'refs/heads/dev'
         run: echo Review on Chromatic
       - name: Publish to Master
         if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/dev'
