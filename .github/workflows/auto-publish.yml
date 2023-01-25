@@ -25,5 +25,6 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
+      - uses: actions/checkout@v1
       - name: Publish to Chromatic
         run: npm run chromatic --project-token=CHROMATIC_PROJECT_TOKEN
