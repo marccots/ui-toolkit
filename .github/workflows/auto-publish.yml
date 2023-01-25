@@ -20,7 +20,7 @@ jobs:
           # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
           run: yarn
           # 👇 Adds Chromatic as a step in the workflow
-        - name: Testing
-          run: npm test
+        - name: Branch
+          run: echo The PR was merged to ${GITHUB_REF#refs/heads/}
         - name: Publish to Chromatic
           run: npm run chromatic --project-token=CHROMATIC_PROJECT_TOKEN
