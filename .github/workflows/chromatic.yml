@@ -13,9 +13,9 @@ on:
 # List of jobs
 jobs:
   chromatic-deployment:
-    steps:
-        # Operating System
+    # Operating System
         runs-on: ubuntu-latest
+    steps:
         # 👇 Checks if the branch is not main and runs Chromatic
       - name: Publish to Chromatic
         if: github.ref != 'refs/heads/master'
