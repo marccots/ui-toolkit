@@ -10,7 +10,9 @@ on:
     tags:
       - '*'
   push:
-    branches: "master"
+    branches: 
+      - "master"
+      - "dev"
 
 # List of jobs
 jobs:
