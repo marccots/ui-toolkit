@@ -11,9 +11,6 @@ on:
 
 # List of jobs
 jobs:
-  
-
-jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
