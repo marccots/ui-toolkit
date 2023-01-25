@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     # Job steps
     steps:
-        - name: Install dependencies
-          run: npm install
-          working-directory: ./
+        - name: Build
+          run: |
+            npm install
+            npm run build
