@@ -25,6 +25,4 @@ jobs:
         - name: Directory
           run: echo Run on directory ${GITHUB_WORKSPACE}
         - name: Publish to Chromatic
-          run: |
-            cd ..
-            npm run chromatic --project-token=CHROMATIC_PROJECT_TOKEN
+          run: npm run chromatic --project-token=CHROMATIC_PROJECT_TOKEN
