@@ -17,7 +17,9 @@ jobs:
     # Job steps
     steps:
         - name: Install dependencies
-          run: npm install
+          # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
+          run: yarn
+          # 👇 Adds Chromatic as a step in the workflow
         - name: Testing
           run: npm test
         - name: Publish to Chromatic
