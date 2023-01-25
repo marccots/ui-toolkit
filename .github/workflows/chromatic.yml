@@ -1,9 +1,7 @@
 # .github/workflows/chromatic.yml
 
-# Workflow name
 name: 'Review on Chromatic'
 
-# Event for the workflow
 on:
   pull_request:
     branches: "*"
@@ -14,16 +12,18 @@ on:
       - "master"
       - "dev"
 
-# List of jobs
 jobs:
   chromatic-deployment:
-    # Operating System
     runs-on: ubuntu-latest
-    # Job steps
     steps:
       - name: Review in Chromatic
         if: github.ref != 'refs/heads/master' && github.ref != 'refs/heads/dev'
-        run: echo Review on Chromatic
-      - name: Publish to Master
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+      - name: Publish automatically
         if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/dev'
-        run: echo Publish to master
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          autoAcceptChanges: true
