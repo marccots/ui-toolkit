@@ -5,7 +5,7 @@ name: 'Review on Chromatic'
 
 # Event for the workflow
 on:
-  push:
+  pull_request:
     branches: "*"
     tags:
       - '*'
@@ -14,8 +14,8 @@ on:
 jobs:
   chromatic-deployment:
     steps:
-        # Other steps
-
+        # Operating System
+        runs-on: ubuntu-latest
         # 👇 Checks if the branch is not main and runs Chromatic
       - name: Publish to Chromatic
         if: github.ref != 'refs/heads/master'
