@@ -29,6 +29,7 @@ jobs:
       - name: Testing
         run: npm test
   chromatic-deployment:
+    runs-on: ubuntu-latest
     steps:
       - name: Branch
         run: echo The PR was merged to ${GITHUB_REF#refs/heads/}
