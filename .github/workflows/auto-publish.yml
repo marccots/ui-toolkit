@@ -1,14 +1,13 @@
-# .github/workflows/chromatic.yml
+# .github/workflows/auto-publish.yml
 
 # Workflow name
-name: 'Chromatic'
+name: 'Auto publish'
 
 # Event for the workflow
 on:
-  push:
-    branches: "*"
-    tags:
-      - '*'
+  pull_request:
+    types:
+      - closed
 
 # List of jobs
 jobs:
