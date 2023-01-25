@@ -11,27 +11,20 @@ on:
 
 # List of jobs
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [ '14', '16', '18' ]
-    name: Node ${{ matrix.node }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node }}
-      - name: Install dependencies
-        run: npm install
-      - name: Testing
-        run: npm test
   chromatic-deployment:
+    # Operating System
     runs-on: ubuntu-latest
+    # Job steps
     steps:
-      - name: Branch
-        run: echo The PR was merged to ${GITHUB_REF#refs/heads/}
-      - name: Publish to Chromatic
-        run: npm run chromatic --project-token=CHROMATIC_PROJECT_TOKEN
+        - name: Install dependencies
+          # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
+          run: yarn
+          # 👇 Adds Chromatic as a step in the workflow
+        - name: Branch
+          run: echo The PR was merged to ${GITHUB_REF#refs/heads/}
+        - name: Directory
+          run: echo Run on directory ${GITHUB_WORKSPACE}
+        - name: Publish to Chromatic
+          run: |
+            cd ui-toolkit
+            npm run chromatic --project-token=CHROMATIC_PROJECT_TOKEN
